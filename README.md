@@ -1,3 +1,4 @@
-C:\terraform>aws ec2 describe-vpc-endpoints --profile aep-aries --region us-east-2 --filters Name=vpc-id,Values=vpc-0a5c1a4507b784997 --query "VpcEndpoints[].[VpcEndpointId,RouteTableIds]" --output text
-vpce-0aa45a822e8bebefb
-rtb-05a9625b3aa1e9f92
+aws ec2 describe-route-tables --profile aep-aries --region us-east-2 --filters Name=vpc-id,Values=vpc-0bee26f8fe1b724b8 --query "RouteTables[].{table:RouteTableId,subnets:Associations[].SubnetId,dest:Routes[].DestinationCidrBlock,tgw:Routes[].TransitGatewayId}" --output json
+
+
+aws ec2 describe-vpc-endpoints --profile aep-aries --region us-east-2 --filters Name=vpc-id,Values=vpc-0bee26f8fe1b724b8 --query "VpcEndpoints[].[ServiceName,VpcEndpointType,RouteTableIds]" --output text
