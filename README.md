@@ -1,9 +1,4 @@
-cmd
-nslookup oidc.us-east-1.amazonaws.com
-cmd
-nslookup portal.sso.us-east-1.amazonaws.com
+terraform init -backend-config=backend-aep.hcl
+terraform plan -var-file=aep.tfvars -out=aep.tfplan
 
-If both now resolve, retry the sign-in:
-
-cmd
-aws sso login --profile aep-aries
+C:\terraform\terraform.exe plan -var-file=aep.tfvars -out=aep.tfplan
