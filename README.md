@@ -1,12 +1,11 @@
+C:\Users\s409387>nslookup oidc.us-east-1.amazonaws.com
+Server:  dns1-anycast.aepsc.com
+Address:  10.1.10.1
 
-C:\terraform>aws ec2 describe-subnets --profile aep-aries --region us-east-2 --filters Name=vpc-id,Values=vpc-0bee26f8fe1b724b8 --query "Subnets[].[Tags[?Key=='Name']|[0].Value,SubnetId]" --output table
----------------------------------------------------
-|                 DescribeSubnets                 |
-+--------------------+----------------------------+
-|  esri-sb_Private_3 |  subnet-00b91cc1c13e3e4f9  |
-|  esri-sb_Private_2 |  subnet-07c2722ae346deedc  |
-|  esri-sb_Private_1 |  subnet-0ead5c457a155d8c1  |
-+--------------------+----------------------------+
+DNS request timed out.
+    timeout was 2 seconds.
+DNS request timed out.
+    timeout was 2 seconds.
+*** Request to dns1-anycast.aepsc.com timed-out
 
-
-C:\terraform>
+C:\Users\s409387>
