@@ -1,1 +1,1 @@
-Since the cloud.aep.com zone is in this account, AWS Certificate Manager could issue the certificate for aries.cloud.aep.com directly, validated through Route 53. Is that acceptable, or should we use the certificate from your cert team?
+c
