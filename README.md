@@ -1,29 +1,26 @@
-type each on one line):
+C:\terraform\aries-terraform-aep\aries-terraform-aep\environments\dev>aws s3api create-bucket --bucket aep-demo-aries-tfstate-387340471575 --region us-east-2 --create-bucket-configuration LocationConstraint=us-east-2 --profile aep-aries
+{
+    "Location": "http://aep-demo-aries-tfstate-387340471575.s3.amazonaws.com/"
+}
 
-cmd
-aws s3api create-bucket --bucket aep-demo-aries-tfstate-387340471575 --region us-east-2 --create-bucket-configuration LocationConstraint=us-east-2 --profile aep-aries
-cmd
-aws s3api put-bucket-versioning --bucket aep-demo-aries-tfstate-387340471575 --versioning-configuration Status=Enabled --profile aep-aries
-cmd
-aws s3api put-public-access-block --bucket aep-demo-aries-tfstate-387340471575 --public-access-block-configuration BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true --profile aep-aries
-2. Put the bucket name into backend-aep.hcl
-cmd
-notepad backend-aep.hcl
 
-Change the first line to:
+C:\terraform\aries-terraform-aep\aries-terraform-aep\environments\dev>aws s3api put-bucket-versioning --bucket aep-demo-aries-tfstate-387340471575 --versioning-configuration Status=Enabled --profile aep-aries
 
-hcl
-bucket       = "aep-demo-aries-tfstate-387340471575"
 
-Leave the other lines (key, region = "us-east-2", profile, encrypt, use_lockfile) as they are. Save and close Notepad.
+C:\terraform\aries-terraform-aep\aries-terraform-aep\environments\dev>terraform\aries-terraform-aep\aries-terraform-aep\environments\dev>
 
-3. Initialise again
-cmd
-terraform init -backend-config=backend-aep.hcl -reconfigure
+C:\terraform\aries-terraform-aep\aries-terraform-aep\environments\dev>aws s3api put-public-access-block --bucket aep-demo-aries-tfstate-387340471575 --public-access-block-configuration
 
-It should end with "Terraform has been successfully initialized!" Then run the plan:
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
 
-cmd
-terraform plan -var-file=aep.tfvars -out=aep.tfplan
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
 
-If creating
+aws: error: argument --public-access-block-configuration: expected one argument
+
+
+C:\terraform\aries-terraform-aep\aries-terraform-aep\environments\dev> notepad backend-aep.hcl
+
+C:\terraform\aries-terraform-aep\aries-terraform-aep\environments\dev>terraform init -backend-config=backend-aep.hcl    
