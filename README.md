@@ -15,3 +15,6 @@ crane push %USERPROFILE%\Downloads\oi-aries-fe.tar 387340471575.dkr.ecr.us-east-
 
 aws ecr describe-images --repository-name aep-demo-aries-api --region us-east-2 --profile aep-aries --query "imageDetails[].imageTags" --output table
 aws ecr describe-images --repository-name aep-demo-aries-fe --region us-east-2 --profile aep-aries --query "imageDetails[].imageTags" --output table
+
+
+set PATH=%PATH%;%USERPROFILE%\crane
