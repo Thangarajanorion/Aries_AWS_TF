@@ -19,3 +19,7 @@ mkdir %USERPROFILE%\crane
 cd %USERPROFILE%\crane
 curl -L -o crane.tar.gz https://github.com/google/go-containerregistry/releases/latest/download/go-containerregistry_Windows_x86_64.tar.gz
 dir crane.tar.gz
+
+
+set PATH=%PATH%;%USERPROFILE%\crane
+crane version
