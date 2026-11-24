@@ -1,28 +1,29 @@
-terraform init -backend-config=backend-aep.hcl
-Initializing the backend...
+type each on one line):
 
-Initializing modules...
-- ecr in ..\..\modules\ecr
-- iam in ..\..\modules\iam
-- osi_scheduler in ..\..\modules\osi_scheduler
-- secrets in ..\..\modules\secrets
-- gateway_tools in ..\..\modules\gateway_tools
-- bedrock in ..\..\modules\bedrock
-- security_groups in ..\..\modules\security_groups
-- s3 in ..\..\modules\s3
-- identity in ..\..\modules\identity
-- alb in ..\..\modules\alb
-- opensearch in ..\..\modules\opensearch
-- agentcore_gateway in ..\..\modules\agentcore_gateway
-- aurora in ..\..\modules\aurora
-- ecs in ..\..\modules\ecs
-- retention in ..\..\modules\retention
-- vpc_endpoints in ..\..\modules\vpc_endpoints
+cmd
+aws s3api create-bucket --bucket aep-demo-aries-tfstate-387340471575 --region us-east-2 --create-bucket-configuration LocationConstraint=us-east-2 --profile aep-aries
+cmd
+aws s3api put-bucket-versioning --bucket aep-demo-aries-tfstate-387340471575 --versioning-configuration Status=Enabled --profile aep-aries
+cmd
+aws s3api put-public-access-block --bucket aep-demo-aries-tfstate-387340471575 --public-access-block-configuration BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true --profile aep-aries
+2. Put the bucket name into backend-aep.hcl
+cmd
+notepad backend-aep.hcl
 
-╷
-│ Error: Failed to get existing workspaces: Unable to list objects in S3 bucket "<STATE_BUCKET>" with prefix "env:/": operation error S3: ListObjectsV2, https response error StatusCode: 400, RequestID: Z3901GXGSH3ACVN7, HostID: iNiHm+W9nSrTBAyKL/jBlgg+2lizSu7b2OlVLScs/4zlN29vbKtO89YzRy52OkM6DBdiPLGALOrdXPw6RqD/IZ1Np/4+Rslp, api error InvalidBucketName: The specified bucket is not valid.
-│
-│
-╵
+Change the first line to:
 
-C:\terraform\aries-terraform-aep\aries-terraform-aep\environments\dev>
+hcl
+bucket       = "aep-demo-aries-tfstate-387340471575"
+
+Leave the other lines (key, region = "us-east-2", profile, encrypt, use_lockfile) as they are. Save and close Notepad.
+
+3. Initialise again
+cmd
+terraform init -backend-config=backend-aep.hcl -reconfigure
+
+It should end with "Terraform has been successfully initialized!" Then run the plan:
+
+cmd
+terraform plan -var-file=aep.tfvars -out=aep.tfplan
+
+If creating
