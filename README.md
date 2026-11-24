@@ -61,6 +61,44 @@ cmd
 cd C:\terraform\aries-terraform-aep\aries-terraform-aep\environments\dev
 terraform fmt -recursive ..\..
 terraform validate
+
+
+
+You can do it with a few commands in cmd. Since app_url already exists in the file, that line must be replaced (not added a second time, which Terraform would reject).
+
+cmd
+cd C:\terraform\aries-terraform-aep\aries-terraform-aep\environments\dev
+copy aep.tfvars aep.tfvars.bak
+
+1. Remove the old app_url line:
+
+cmd
+findstr /v /b "app_url" aep.tfvars > aep.new
+move /y aep.new aep.tfvars
+
+2. Add the three lines at the end:
+
+cmd
+echo.>> aep.tfvars
+echo route53_zone_id = "Z07331021PJL72XPRQ45K">> aep.tfvars
+echo app_hostname    = "aries.cloud.aep.com">> aep.tfvars
+echo app_url         = "https://aries.cloud.aep.com">> aep.tfvars
+
+(Type them exactly as shown: no space before >>, so no extra spaces end up in the file.)
+
+3. Check the result:
+
+cmd
+findstr /n "route53_zone_id app_hostname app_url" aep.tfvars
+
+You should see each name once, with the new values.
+
+If something looks wrong, restore the backup and try again:
+
+cmd
+copy /y aep.tfvars.bak aep.tfvars
+
+Alternatively, Notepad is just as quick: notepad aep.tfvars → find the app_url line and change it → paste or type the two new lines at the end → Save.
 terraform plan -var-file=aep.tfvars -out=aep.tfplan
 
 Expected: Success! The configuration is valid, and the plan now includes aws_route53_record.app
