@@ -1,10 +1,9 @@
-C:\Users\s409387>nslookup sts.us-east-2.amazonaws.com
-Server:  dns1-anycast.aepsc.com
-Address:  10.1.10.1
+cmd
+nslookup oidc.us-east-1.amazonaws.com
+cmd
+nslookup portal.sso.us-east-1.amazonaws.com
 
-Non-authoritative answer:
-Name:    sts.us-east-2.amazonaws.com
-Address:  3.146.12.216
+If both now resolve, retry the sign-in:
 
-
-C:\Users\s409387>
+cmd
+aws sso login --profile aep-aries
