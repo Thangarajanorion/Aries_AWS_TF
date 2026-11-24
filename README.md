@@ -18,3 +18,5 @@ aws ecr describe-images --repository-name aep-demo-aries-fe --region us-east-2 -
 
 
 set PATH=%PATH%;%USERPROFILE%\crane
+
+crane push %USERPROFILE%\Downloads\oi-aries-api.tar 387340471575.dkr.ecr.us-east-2.amazonaws.com/aep-demo-aries-api:main-20261124-279568-api
