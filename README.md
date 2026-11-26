@@ -1,1 +1,1 @@
-ARIES infrastructure provisioning is pending from AEP's side. We have requested the certificate (needed to deploy the infrastructure) and the Entra ID details (needed for user sign-in). Once we receive them, we're ready to complete the first three activities. The Terraform code is ready and only waiting for these details.
+v
